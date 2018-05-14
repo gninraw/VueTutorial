@@ -1,0 +1,42 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <select v-model="selected">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+      </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                selected: 'A',
+                options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+                ]
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

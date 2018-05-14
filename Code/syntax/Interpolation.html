@@ -1,0 +1,49 @@
+<html class="no-js">
+
+<head>
+    <title>Interpolation</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <div class="example">
+            <h1>텍스트 보간법 예제입니다.</h1>
+            <div class="example">
+                <h3>기본 데이터는 다음과 같습니다.</h3>
+                <div>
+                    <span> message : {{ message }}</span>
+                    <br/>
+                    <span v-once> message-once : {{ message }}</span>
+                    
+                </div>
+
+                <button @click="clicked"> 메세지변경 </button>
+            </div>
+        </div>
+       
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Vue.js는 쉽고 재미있어요',
+            },
+            methods: {
+                clicked: function () {
+                    this.message = "메세지가 변경되었습니다."
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

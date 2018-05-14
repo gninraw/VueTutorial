@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <title>v-for example</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <div class="example">
+            <h1>v-for 예제입니다.</h1>
+            <div class="example">
+                <h3>데이터 리스트를 반복합니다.</h3>
+                <ul>
+                    <li v-for="item in items" :key="item.key">
+                        {{ item.key }} - {{ item.value }}
+                    </li>
+                </ul>
+            </div>
+            <div class="example">
+                <h3>데이터 리스트를 인덱스와 같이 반복합니다.</h3>
+                <ul>
+                    <li v-for="(item,index) in items" :key="item.key">
+                        {{ index }} - {{ item.key }} - {{ item.value }}
+                    </li>
+                </ul>
+            </div>
+            <div class="example"> 
+                <h3>데이터 하나의 값을 확인합니다.</h3>
+                <ul>
+                    <li v-for="item in items[0]" :key="item.key">
+                        {{ item }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                items: [
+                    {
+                        key: "아이템 1",
+                        value: '첫번째 아이템'
+                    },
+                    {
+                        key: "아이템 2",
+                        value: '두번째 아이템'
+                    },
+                    {
+                        key: "아이템 3",
+                        value: '세번째 아이템'
+                    },
+                    {
+                        key: "아이템 4",
+                        value: '네번째 아이템'
+                    }
+                ]
+            },
+        })
+    </script>
+
+</body>
+
+</html>

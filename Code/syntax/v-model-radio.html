@@ -1,0 +1,39 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <br>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <br>
+        <span>선택: {{ picked }}</span>
+        <br>
+      </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                picked: ''
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

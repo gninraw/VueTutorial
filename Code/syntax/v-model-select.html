@@ -1,0 +1,38 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <select v-model="selected">
+            <option disabled value="">Please select one</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+          </select>
+          <span>선택함: {{ selected }}</span>
+      </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                selected: ''
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

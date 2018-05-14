@@ -1,0 +1,33 @@
+<html class="no-js">
+
+<head>
+    <title> v-html example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>        
+        <div class="example">
+            <h1>v-html 예제입니다.</h1>
+            <div v-html="htmlMessage"></div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                htmlMessage: '<span><b>v-html 디렉티브</b>를 이용하여 태그를 보내줄수 있어요. </span>',
+            },
+        })
+    </script>
+</body>
+
+</html>

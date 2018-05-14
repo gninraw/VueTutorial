@@ -1,0 +1,53 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <input v-on:keyup.13="addToCount" v-model="addValue">
+
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">메시지 뒤집기</button>
+        <br/>
+
+        <p>{{ message2 }}</p>
+        <button @click="changeMessage">메시지 뒤집기</button>
+
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                addValue : '',
+                message: '안녕하세요! Vue.js!',
+                message2: '안녕하세요! Vue.js!'
+            },
+            methods: {
+                addToCount:function(){
+                    this.addValue = "데이터가 입력되었습니다."
+                },
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('')
+                }, 
+                changeMessage: function () {
+                    this.message2 = 'Text Changed!!!'
+                } 
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

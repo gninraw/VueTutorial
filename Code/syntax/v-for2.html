@@ -1,0 +1,54 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <div id="app">
+            <ul>
+                <li v-for="car in cars">
+                {{car.name}}: {{car.brand}}
+                </li>
+            </ul>
+            <input type="text" v-model="car.name" placeholder="차 이름"/>
+            <input type="text" v-model="car.brand" placeholder="차 브랜드"/>
+            <button v-on:click="add">추가</button>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                cars: [
+                { name: '소나타', brand: '현대'},
+                { name: 'K5', brand: '기아'}
+                ],
+                car: {
+                name: '',
+                brand: ''
+                }
+            },
+            methods: {
+                add () {
+                this.cars.push(this.car);
+                this.car = {};
+                }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

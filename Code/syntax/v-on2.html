@@ -1,0 +1,33 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <button v-on:click="counter += 1">Add 1</button>
+        <p>위 버튼을 클릭한 횟수는 {{ counter }} 번 입니다.</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                counter: 0
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
