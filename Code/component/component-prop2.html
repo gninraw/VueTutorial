@@ -1,0 +1,46 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+   
+
+    <div id='app'>
+        <input v-model="parentMsg">
+        <br>
+        <child v-bind:my-message="parentMsg"></child>
+    </div>
+
+    <div id='child'>
+            <span>{{ myMessage }}</span>
+    </div>
+
+    <script>
+        Vue.component('child', {
+            el : '#child',
+            props: ['myMessage'],
+        })
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                parentMsg : '글자를 입력해보세요'
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

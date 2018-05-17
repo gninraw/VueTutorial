@@ -1,0 +1,75 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+   
+
+    <div id="sender-app">
+            <input v-model="text">
+            <button @click="sender">sender</button>
+            <div v-if="receiveText">#sender-app: I sent a message a  {{ sendedText }}</div>
+        </div>
+        <div id="receiver-app">
+            <div v-if="text">#receiver-app: {{ text }}</div>
+    </div>
+
+    <script>
+    var EventBus = new Vue();
+
+    var SenderApp = new Vue({
+        el: '#sender-app',
+        data() {
+            return {
+                text: '',
+                sendedText:'',
+                receiveText: ''
+            }
+        },
+        created() {
+            EventBus.$on('message', this.onReceive);
+        },
+        methods: {
+            sender() {
+                EventBus.$emit('message', this.text);
+                this.sendedText = this.text;
+                this.text = '';
+            },
+            onReceive(text) {
+                this.receiveText = text;
+            }
+        }
+    });
+
+    var ReceiverApp = new Vue({
+        el: '#receiver-app',
+        data() {
+            return {
+                text: ''
+            }
+        },
+        created() {
+            EventBus.$on('message', this.onReceive);
+        },
+        methods: {
+            onReceive(text) {
+                this.text = text;
+            }
+        }
+    });
+    </script>
+
+
+</body>
+
+</html>

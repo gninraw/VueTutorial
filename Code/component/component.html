@@ -1,0 +1,51 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+        <simple-counter></simple-counter>
+        <simple-counter></simple-counter>
+    </div>
+
+
+
+    <script>
+        Vue.component('my-component', {
+            template: '<div>사용자 정의 컴포넌트 입니다!</div>'
+        })
+
+
+        Vue.component('simple-counter', {
+            template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+        
+            data: function () {
+                return {counter : 0}
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
