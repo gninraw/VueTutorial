@@ -1,0 +1,88 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+   
+
+    <div id='app'>
+        <child prop-c="Hello22">
+                <p slot="header">전달된 헤더입니다.</p>
+            <p>hahaha</p>
+        </child>
+    </div>
+
+    <script>
+        Vue.component('child', {
+            template : '<div>\
+                        <span>{{ myMessage }}</span>\
+                        <br/>\
+                        <slot name="header"> 헤더입니다. </slot><br/>\
+                        <slot> 슬롯이 비어있습니다. </slot><br/>\
+                        <slot name="footer"> 풋터입니다. </slot></div>',
+            props: {
+                // 기본 타입 확인 (`null` 은 어떤 타입이든 가능하다는 뜻입니다)
+                propA: Number,
+
+                // 여러개의 가능한 타입
+                propB: [String, Number],
+
+                // 문자열이며 꼭 필요합니다
+                propC: {
+                    type: String,
+                    required: true
+                },
+                // 숫자이며 기본 값을 가집니다
+                propD: {
+                    type: Number,
+                    default: 100
+                },
+
+                // 객체/배열의 기본값은 팩토리 함수에서 반환 되어야 합니다.
+                propE: {
+                    type: Object,
+                    default: function () {
+                        return { message: 'hello' }
+                    }
+                },
+
+                // 사용자 정의 유효성 검사 가능
+                propF: {
+                    validator: function (value) {
+                        return value > 10
+                    }
+                } 
+            },
+            mounted(){
+                //this.myMessage = this.propC
+            },
+            data (){
+                return {
+                    myMessage : this.propC
+                }
+            }
+        })
+
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>

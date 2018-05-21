@@ -1,0 +1,168 @@
+<html >
+
+<head>
+    <title>보간법</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        
+        <div class="example">
+            <h1>텍스트 보간법 예제입니다.</h1>
+            <div class="example">
+                <h3>기본 데이터는 다음과 같습니다.</h3>
+                <div>
+                    <span>message : {{ message }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="example">
+            <h1>v-bind 예제입니다.</h1>
+            <div class="example">
+                <h3>v-bind:title로 바인딩 해봅니다.</h3>
+                <div>
+                    <!-- v-bind 방법 1. -->
+                    <span v-bind:title="message">마우스를 올리면 message 값을 볼수 있어요.</span>
+                </div>
+            </div>
+            <div class="example">
+                <h3>:title로 바인딩 해봅니다.</h3>
+                <div>
+                    <!-- v-bind 방법 2. -->
+                    <span :title="message">마우스를 올리면 message 값을 볼수 있어요.</span>
+                </div>
+            </div>
+        </div>
+        <div class="example">
+            <h1>v-html 예제입니다.</h1>
+            <div v-html="htmlMessage"></div>
+        </div>
+        <div class="example">
+            <h1>v-model 예제입니다.</h1>
+            <input v-model="text">
+            <p>
+                <span>input : {{ text }}</span>
+            </p>
+        </div>
+        <div class="example">
+            <h1>조건부 디렉티브 예제입니다.</h1>
+            <div class="example">
+
+                <h3>v-if, v-else-if, v-else 예제입니다.</h3>
+
+                <input type="radio" v-model="radioValue" value="0" name='exampleGroup'> 첫번째
+                <input type="radio" v-model="radioValue" value="1" name='exampleGroup'> 두번째
+                <input type="radio" v-model="radioValue" value="2" name='exampleGroup'> 세번째
+                <p>
+                    <span v-if="radioValue == 0">첫번째 라디오 버튼이 눌렸어요.</span>
+                    <span v-else-if="radioValue == 1">두번째 라디오 버튼이 눌렸어요.</span>
+                    <span v-else>세번째 라디오 버튼이 눌렸어요.</span>
+                </p>
+            </div>
+            <div class="example">
+                <h3>v-show 예제입니다.</h3>
+                <input type="checkbox" v-model="isChecked" value="0" name='exampleGroup'> 체크박스
+                <p v-show="isChecked">
+                    <span>체크 박스가 눌렸어요.</span>
+                </p>
+            </div>
+        </div>
+        <div class="example">
+            <h1>v-for 예제입니다.</h1>
+            <div class="example">
+                <h3>데이터 리스트를 반복합니다.</h3>
+                <ul>
+                    <li v-for="item in items" :key="item.key">
+                        {{ item.key }} - {{ item.value }}
+                    </li>
+                </ul>
+            </div>
+            <div class="example">
+                <h3>데이터 리스트를 인덱스와 같이 반복합니다.</h3>
+                <ul>
+                    <li v-for="(item,index) in items" :key="item.key">
+                        {{ index }} - {{ item.key }} - {{ item.value }}
+                    </li>
+                </ul>
+            </div>
+            <div class="example">
+                <h3>데이터 하나의 값을 확인합니다.</h3>
+                <ul>
+                    <li v-for="item in items[0]" :key="item.key">
+                        {{ item }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isChecked: false,
+                radioValue: 0,
+                text: '',
+                message: 'Vue.js는 쉽고 재미있어요',
+                htmlMessage: '<span><b>v-html 디렉티브</b>를 이용하여 태그를 보내줄수 있어요. </span>',
+                items: [
+                    {
+                        key: "아이템 1",
+                        value: '첫번째 아이템'
+                    },
+                    {
+                        key: "아이템 2",
+                        value: '두번째 아이템'
+                    },
+                    {
+                        key: "아이템 3",
+                        value: '세번째 아이템'
+                    },
+                    {
+                        key: "아이템 4",
+                        value: '네번째 아이템'
+                    }
+                ]
+            },
+        })
+    </script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                items: [
+                    {
+                        key: "아이템 1",
+                        value: '첫번째 아이템'
+                    },
+                    {
+                        key: "아이템 2",
+                        value: '두번째 아이템'
+                    },
+                    {
+                        key: "아이템 3",
+                        value: '세번째 아이템'
+                    },
+                    {
+                        key: "아이템 4",
+                        value: '네번째 아이템'
+                    }
+                ]
+            },
+        })
+    </script>
+
+</body>
+
+</html>

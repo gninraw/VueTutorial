@@ -1,0 +1,56 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <my-component>
+                <p> 자식콤포넌트 영역입니다.  </p>
+                <simple-counter :initcounter="1" ></simple-counter>
+                <simple-counter :initcounter="2" ></simple-counter>
+                <simple-counter :initcounter="3" ></simple-counter>
+        </my-component>
+
+    </div>
+
+    <script>
+        Vue.component('my-component', {
+            template: '<div class="example">\
+                            <h3> 나는 자식 컴포넌트의 제목입니다 </h3>\
+                            <div>\
+                                <slot>\
+                                    제공된 컨텐츠가 없는 경우에만 보실 수 있습니다.\
+                                </slot>\
+                            </div>\
+                        </div>'
+        })
+
+
+        Vue.component('simple-counter', {
+            props :['initcounter'],
+            template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+            data: function () {
+                return {counter : this.initcounter }
+            }
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data: { }
+        })
+    </script>
+
+
+</body>
+
+</html>

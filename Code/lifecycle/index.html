@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to Vue.js world!</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #parent {
+            border: 1px blue solid
+        }
+
+        #child {
+            border: 1px red solid;
+            margin: 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id='app'>
+        <p>
+            <h2>Life Cycle 훅(hook) 예제입니다.</h2>
+        </p>
+        <h2>F12를 눌러 Console 탭을 확인하세요.</h2>
+        <div>
+            <label for="chk-box">
+                <span>누르면 Updating Cycle이 발생해요.</span>
+            </label>
+            <input type="checkbox" v-model="isChecked" id="chk-box">
+        </div>
+        <div v-show="isShow">
+            <span > 업데이트 함수에서 호출되었습니다.  </span>
+        </div>
+        
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                isChecked: false,
+                isShow :false
+            },
+            beforeCreate() {
+                console.log("beforeCreate")
+            },
+            created() {
+                console.log("created")
+            },
+            beforeMount() {
+                console.log("beforeMount")
+            },
+            mounted() {
+                console.log("mounted")
+            },
+            beforeUpdate() {
+                console.log("beforeUpdate")
+                console.log("isChecked:", this.isChecked)
+            },
+            updated() {
+                console.log("updated")
+                this.isShow  = this.isChecked
+            },
+            beforeDestory() {
+                console.log("beforeDestory")
+            },
+            destroyed() {
+                console.log("destroyed")
+            }
+        })
+
+
+
+    </script>
+
+</body>
+
+</html>

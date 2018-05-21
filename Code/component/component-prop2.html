@@ -23,12 +23,16 @@
 
     <div id='child'>
             <span>{{ myMessage }}</span>
+            <span>{{ myMessage2 }}</span>
     </div>
 
     <script>
         Vue.component('child', {
             el : '#child',
             props: ['myMessage'],
+            data (){
+                myMessage2 = props.myMessage
+            }
         })
 
 

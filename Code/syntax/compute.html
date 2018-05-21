@@ -1,0 +1,56 @@
+<html class="no-js">
+
+<head>
+    <title> v-model example </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        .example {
+            border: 1px blue solid;
+            margin: 5px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <p>원본 메시지: "{{ message }}"</p>
+        <p>뒤집히도록 계산된 메시지: "{{ reversedMessage }}"</p>
+        <p>fullName : "{{ fullName }}"</p>
+        <input v-model="firstName">
+        <p>fullName : "{{ count }}"</p>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message : '안녕하세요',
+
+                firstName: 'Foo',
+                lastName: 'Bar',
+                fullName: 'Foo Bar',
+                count : 0
+            },
+            watch:{
+                firstName: function (newfirstname) {
+                   this.firstName = newfirstname;
+                   this.fullName = newfirstname + ' ' + this.lastName;
+                   this.count = this.fullName.length;     
+                }
+            },
+            computed:{
+                reversedMessage : function() {
+                    return this.message.split('').reverse().join('');
+                },
+                // fullName : function() {
+                //     return this.firstName + ' ' + this.lastName;
+                // }
+            }
+        })
+    </script>
+
+
+</body>
+
+</html>
